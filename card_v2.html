@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trail de Ficalho 2027 — Daily Liquid Glass Card v2</title>
+<style>
+  :root {
+    --glass-bg: rgba(255, 255, 255, 0.085);
+    --glass-border: rgba(255, 255, 255, 0.22);
+    --glass-highlight: rgba(255, 255, 255, 0.42);
+    --text-main: #f8fafc;
+    --text-muted: rgba(226, 232, 240, 0.78);
+    --hero-tint: rgba(56, 189, 248, 0.24);
+    --hero-border: rgba(125, 211, 252, 0.45);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #060913;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #card {
+    width: 430px;
+    height: 764px;
+    padding: 24px 20px 22px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background:
+      radial-gradient(circle at 12% 10%, rgba(20, 184, 166, 0.32), transparent 46%),
+      radial-gradient(circle at 88% 22%, rgba(59, 130, 246, 0.28), transparent 48%),
+      radial-gradient(circle at 22% 85%, rgba(99, 102, 241, 0.26), transparent 52%),
+      radial-gradient(circle at 82% 88%, rgba(245, 158, 11, 0.14), transparent 45%),
+      linear-gradient(160deg, #0b1324 0%, #101b30 50%, #0a1020 100%);
+  }
+
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(28px) saturate(165%);
+    -webkit-backdrop-filter: blur(28px) saturate(165%);
+    border-radius: 22px;
+    border: 1px solid var(--glass-border);
+    box-shadow:
+      inset 0 1px 0 var(--glass-highlight),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+      0 14px 30px rgba(0, 0, 0, 0.32);
+  }
+
+  .badge {
+    display: inline-block;
+    width: fit-content;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #e2e8f0;
+  }
+
+  .title {
+    font-size: 31px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin-top: 4px;
+  }
+
+  .subtitle {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .pills {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+    margin-top: 6px;
+  }
+
+  .pill {
+    text-align: center;
+    padding: 6px 4px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #f1f5f9;
+  }
+
+  .hero {
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(135deg, var(--hero-tint), rgba(255,255,255,0.06));
+    border-color: var(--hero-border);
+  }
+
+  .hero-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+  }
+
+  .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: rgba(226, 232, 240, 0.75);
+    margin-bottom: 3px;
+  }
+
+  .hero-title { font-size: 17px; font-weight: 700; line-height: 1.2; }
+  .hero-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .widget {
+    padding: 13px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .widget-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mini-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+  }
+
+  .widget-body {
+    font-size: 11.8px;
+    line-height: 1.4;
+    color: #f1f5f9;
+  }
+
+  .fuel {
+    padding: 13px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .fuel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .fuel-cue {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #a7f3d0;
+    background: rgba(16, 185, 129, 0.16);
+    border: 1px solid rgba(110, 231, 183, 0.3);
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+
+  .meal-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 11.8px;
+    line-height: 1.36;
+  }
+
+  .meal-tag {
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .teal { background: linear-gradient(135deg, rgba(20, 184, 166, 0.18), rgba(255,255,255,0.06)); border-color: rgba(94, 234, 212, 0.35); }
+  .indigo { background: linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(255,255,255,0.06)); border-color: rgba(129, 140, 248, 0.35); }
+</style>
+</head>
+<body>
+  <main id="card">
+    <header>
+      <div class="glass badge" id="badge"></div>
+      <h1 class="title" id="day-label"></h1>
+      <div class="subtitle" id="subtitle"></div>
+      <div class="pills">
+        <div class="glass pill" id="kcal"></div>
+        <div class="glass pill" id="protein"></div>
+        <div class="glass pill" id="water"></div>
+        <div class="glass pill" id="body-rule"></div>
+      </div>
+    </header>
+
+    <section class="glass hero" id="hero-card">
+      <div class="hero-icon" id="hero-icon">🏊</div>
+      <div>
+        <div class="label">TRAINING</div>
+        <div class="hero-title" id="training-title"></div>
+        <div class="hero-sub" id="training-sub"></div>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="glass widget">
+        <div class="widget-head">
+          <div class="mini-icon">🌅</div>
+          <div class="label" style="margin:0">MORNING STACK</div>
+        </div>
+        <div class="widget-body" id="morning-stack"></div>
+      </div>
+      <div class="glass widget">
+        <div class="widget-head">
+          <div class="mini-icon">☕</div>
+          <div class="label" style="margin:0">FOCUS & HYDRATION</div>
+        </div>
+        <div class="widget-body" id="focus-hydration"></div>
+      </div>
+    </section>
+
+    <section class="glass fuel">
+      <div class="fuel-header">
+        <div class="label" style="margin:0">QUALITY FUEL</div>
+        <div class="fuel-cue" id="fuel-cue"></div>
+      </div>
+      <div class="meal-row"><span>🥪</span><div><span class="meal-tag">LUNCH — </span><span id="lunch"></span></div></div>
+      <div class="meal-row"><span>🥤</span><div><span class="meal-tag">SNACK — </span><span id="snack"></span></div></div>
+      <div class="meal-row"><span>🍲</span><div><span class="meal-tag">DINNER — </span><span id="dinner"></span></div></div>
+    </section>
+
+    <section class="grid-2">
+      <div class="glass widget teal">
+        <div class="widget-head">
+          <div class="mini-icon">🧘</div>
+          <div class="label" style="margin:0">MEDITATION</div>
+        </div>
+        <div class="widget-body" id="meditation-cue"></div>
+      </div>
+      <div class="glass widget indigo">
+        <div class="widget-head">
+          <div class="mini-icon">🌙</div>
+          <div class="label" style="margin:0">EVENING</div>
+        </div>
+        <div class="widget-body" id="evening"></div>
+      </div>
+    </section>
+  </main>
+
+<script>
+  const THEMES = {
+    SWIM: { icon: "🏊", tint: "rgba(56, 189, 248, 0.25)", border: "rgba(125, 211, 252, 0.45)" },
+    RUN:  { icon: "🏃", tint: "rgba(16, 185, 129, 0.24)", border: "rgba(110, 231, 183, 0.45)" },
+    LIFT: { icon: "🏋️", tint: "rgba(245, 158, 11, 0.24)", border: "rgba(252, 211, 77, 0.45)" },
+    REST: { icon: "🧘", tint: "rgba(129, 140, 248, 0.24)", border: "rgba(165, 180, 252, 0.45)" }
+  };
+
+  const data = window.__CARD_DATA__ || {
+    Badge: "TRAIL DE FICALHO 2027 • W1",
+    Day_Label: "Monday, Nov 23",
+    Subtitle: "Phase 1 Kickoff • Active Recovery",
+    Kcal: "2,700 kcal", Protein: "160g PRO", Water: "3L Water", Body_Rule: "Body ≤ 2/10",
+    Training_Type: "SWIM",
+    Training_Title: "30m Slow Swim + 15m Mobility",
+    Training_Sub: "Active recovery • Calf & hip focus",
+    Morning_Stack: "30mg Elvanse • Vivo WHOLE + ½ Vegan Pro + 350ml Oat Milk • 5g Creatine • 2ml Omega-3 • 0.5ml D3/K2 • Banana & almonds",
+    Focus_Hydration: "Coffee/Tea + 200mg L-Theanine • Cutoff 14:00 • 2× 1L Water",
+    Fuel_Cue: "Whole veg fuel • 160g PRO",
+    Lunch: "Rugbrød Plate: 3 Eggs, 60g Cheese, Hummus & Greens (~44g)",
+    Snack: "Kefir Shake: 350ml Kefir + 1 Scoop Vegan Pro + Berries (~38g)",
+    Dinner: "Smoky Black Beans, Crispy Tofu & Rice Bowl w/ Salsa & Cheddar (~49g)",
+    Meditation_Cue: "10m Daily Meditation • Breathwork & mental reset",
+    Evening: "Magnesium Glycinate 45m pre-bed • Light/rest night"
+  };
+
+  const theme = THEMES[data.Training_Type] || THEMES.SWIM;
+  document.documentElement.style.setProperty("--hero-tint", theme.tint);
+  document.documentElement.style.setProperty("--hero-border", theme.border);
+
+  document.getElementById("hero-icon").textContent = theme.icon;
+  document.getElementById("badge").textContent = data.Badge;
+  document.getElementById("day-label").textContent = data.Day_Label;
+  document.getElementById("subtitle").textContent = data.Subtitle;
+  document.getElementById("kcal").textContent = data.Kcal;
+  document.getElementById("protein").textContent = data.Protein;
+  document.getElementById("water").textContent = data.Water;
+  document.getElementById("body-rule").textContent = data.Body_Rule;
+  document.getElementById("training-title").textContent = data.Training_Title;
+  document.getElementById("training-sub").textContent = data.Training_Sub;
+  document.getElementById("morning-stack").textContent = data.Morning_Stack;
+  document.getElementById("focus-hydration").textContent = data.Focus_Hydration;
+  document.getElementById("fuel-cue").textContent = data.Fuel_Cue;
+  document.getElementById("lunch").textContent = data.Lunch;
+  document.getElementById("snack").textContent = data.Snack;
+  document.getElementById("dinner").textContent = data.Dinner;
+  document.getElementById("meditation-cue").textContent = data.Meditation_Cue;
+  document.getElementById("evening").textContent = data.Evening;
+</script>
+</body>
+</html>

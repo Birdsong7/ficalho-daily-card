@@ -1,0 +1,11 @@
+{
+  "name": "ficalho-daily-card",
+  "version": "2.0.0",
+  "description": "Automated iOS 27 Liquid Glass daily dashboard renderer for Trail de Ficalho 2027",
+  "scripts": {
+    "render": "node render_card.js"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0"
+  }
+}
