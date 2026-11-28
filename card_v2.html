@@ -2,331 +2,364 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Trail de Ficalho 2027 — Daily Liquid Glass Card v2</title>
+<meta name="viewport" content="width=1080, initial-scale=1.0" />
+<title>Trail de Ficalho 2027 — Tactile Brutalism Daily Card</title>
 <style>
   :root {
-    --glass-bg: rgba(255, 255, 255, 0.085);
-    --glass-border: rgba(255, 255, 255, 0.22);
-    --glass-highlight: rgba(255, 255, 255, 0.42);
-    --text-main: #f8fafc;
-    --text-muted: rgba(226, 232, 240, 0.78);
-    --hero-tint: rgba(56, 189, 248, 0.24);
-    --hero-border: rgba(125, 211, 252, 0.45);
+    --bg: #F6F2E9;
+    --ink: #111111;
+    --surface: #FFFFFF;
+    --hero-bg: #FFD426;
+    --accent-coral: #FF6B4A;
+    --accent-mint: #A8E6CF;
+    --accent-lavender: #D6C6FF;
+    --accent-sky: #B8E1FF;
+    --border: 4px solid #111111;
+    --shadow: 6px 6px 0px #111111;
+    --shadow-sm: 4px 4px 0px #111111;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
   body {
-    background: #060913;
+    background: #111111;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
-    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
     -webkit-font-smoothing: antialiased;
   }
 
   #card {
-    width: 430px;
-    height: 764px;
-    padding: 24px 20px 22px;
-    position: relative;
-    overflow: hidden;
+    width: 1080px;
+    height: 1080px;
+    padding: 34px;
+    background-color: var(--bg);
+    background-image: radial-gradient(rgba(17, 17, 17, 0.09) 1.25px, transparent 0);
+    background-size: 16px 16px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    background:
-      radial-gradient(circle at 12% 10%, rgba(20, 184, 166, 0.32), transparent 46%),
-      radial-gradient(circle at 88% 22%, rgba(59, 130, 246, 0.28), transparent 48%),
-      radial-gradient(circle at 22% 85%, rgba(99, 102, 241, 0.26), transparent 52%),
-      radial-gradient(circle at 82% 88%, rgba(245, 158, 11, 0.14), transparent 45%),
-      linear-gradient(160deg, #0b1324 0%, #101b30 50%, #0a1020 100%);
+    gap: 16px;
   }
 
-  .glass {
-    background: var(--glass-bg);
-    backdrop-filter: blur(28px) saturate(165%);
-    -webkit-backdrop-filter: blur(28px) saturate(165%);
-    border-radius: 22px;
-    border: 1px solid var(--glass-border);
-    box-shadow:
-      inset 0 1px 0 var(--glass-highlight),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.06),
-      0 14px 30px rgba(0, 0, 0, 0.32);
+  .mono {
+    font-family: "SF Mono", "JetBrains Mono", "Menlo", monospace;
   }
 
-  .badge {
-    display: inline-block;
-    width: fit-content;
-    padding: 5px 12px;
-    border-radius: 999px;
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #e2e8f0;
-  }
-
-  .title {
-    font-size: 31px;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    line-height: 1.1;
-    margin-top: 4px;
-  }
-
-  .subtitle {
-    font-size: 13.5px;
-    color: var(--text-muted);
-    margin-top: 2px;
-  }
-
-  .pills {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 7px;
-    margin-top: 6px;
-  }
-
-  .pill {
-    text-align: center;
-    padding: 6px 4px;
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 600;
-    color: #f1f5f9;
-  }
-
-  .hero {
-    padding: 14px 16px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    background: linear-gradient(135deg, var(--hero-tint), rgba(255,255,255,0.06));
-    border-color: var(--hero-border);
-  }
-
-  .hero-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.16);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    display: grid;
-    place-items: center;
-    font-size: 24px;
-    flex-shrink: 0;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
-  }
-
-  .label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-    color: rgba(226, 232, 240, 0.75);
-    margin-bottom: 3px;
-  }
-
-  .hero-title { font-size: 17px; font-weight: 700; line-height: 1.2; }
-  .hero-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
-
-  .grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  .widget {
-    padding: 13px 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .widget-head {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .mini-icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 9px;
-    background: rgba(255, 255, 255, 0.13);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    display: grid;
-    place-items: center;
-    font-size: 14px;
-  }
-
-  .widget-body {
-    font-size: 11.8px;
-    line-height: 1.4;
-    color: #f1f5f9;
-  }
-
-  .fuel {
-    padding: 13px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex: 1;
-  }
-
-  .fuel-header {
+  /* Header Bar */
+  .header {
+    background: var(--ink);
+    color: var(--bg);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: 14px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .date-pill {
+    background: var(--accent-coral);
+    color: var(--ink);
+    border: 3px solid var(--bg);
+    padding: 5px 14px;
+    font-size: 17px;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+
+  /* Hero Workout Block */
+  .hero {
+    background: var(--hero-bg);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
     gap: 8px;
   }
 
-  .fuel-cue {
-    font-size: 10.5px;
-    font-weight: 600;
-    color: #a7f3d0;
-    background: rgba(16, 185, 129, 0.16);
-    border: 1px solid rgba(110, 231, 183, 0.3);
-    padding: 2px 8px;
-    border-radius: 999px;
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
   }
 
-  .meal-row {
+  .tag {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 4px 12px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .body-rule {
+    background: var(--surface);
+    color: var(--ink);
+    border: 2.5px solid var(--ink);
+    padding: 3px 10px;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .workout-title {
+    font-size: 48px;
+    font-weight: 950;
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .workout-sub {
+    font-size: 19px;
+    font-weight: 700;
+  }
+
+  /* Compact 3-Box Macro Strip */
+  .targets-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .target-box {
+    border: 3px solid var(--ink);
+    box-shadow: var(--shadow-sm);
+    padding: 9px 14px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .target-box.kcal { background: var(--accent-mint); }
+  .target-box.protein { background: var(--accent-lavender); }
+  .target-box.water { background: var(--accent-sky); }
+
+  .target-label {
+    font-size: 14px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .target-val {
+    font-size: 24px;
+    font-weight: 950;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+
+  /* Tall Main Two-Column Grid: AM Stack & Fuel Log */
+  .main-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 18px;
+    min-height: 0;
+  }
+
+  .panel {
+    background: var(--surface);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .panel-title {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 10px 18px;
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .panel-list {
+    padding: 16px 20px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex: 1;
+    gap: 10px;
+    font-size: 21px;
+    font-weight: 650;
+    line-height: 1.28;
+  }
+
+  .panel-list li {
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    font-size: 11.8px;
-    line-height: 1.36;
   }
 
-  .meal-tag {
-    font-weight: 700;
-    color: #ffffff;
+  .bullet {
+    font-weight: 950;
+    flex-shrink: 0;
   }
 
-  .teal { background: linear-gradient(135deg, rgba(20, 184, 166, 0.18), rgba(255,255,255,0.06)); border-color: rgba(94, 234, 212, 0.35); }
-  .indigo { background: linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(255,255,255,0.06)); border-color: rgba(129, 140, 248, 0.35); }
+  /* Footer Protocol Strip */
+  .footer {
+    background: var(--accent-coral);
+    border: var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 11px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .footer-badge {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 3px 10px;
+    font-size: 13px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
 </style>
 </head>
 <body>
   <main id="card">
-    <header>
-      <div class="glass badge" id="badge"></div>
-      <h1 class="title" id="day-label"></h1>
-      <div class="subtitle" id="subtitle"></div>
-      <div class="pills">
-        <div class="glass pill" id="kcal"></div>
-        <div class="glass pill" id="protein"></div>
-        <div class="glass pill" id="water"></div>
-        <div class="glass pill" id="body-rule"></div>
-      </div>
+    <header class="header">
+      <span class="mono" id="badge">TRAIL DE FICALHO 2027</span>
+      <span class="date-pill mono" id="day-label">TUE 24 NOV</span>
     </header>
 
-    <section class="glass hero" id="hero-card">
-      <div class="hero-icon" id="hero-icon">🏊</div>
-      <div>
-        <div class="label">TRAINING</div>
-        <div class="hero-title" id="training-title"></div>
-        <div class="hero-sub" id="training-sub"></div>
+    <section class="hero" id="hero-card">
+      <div class="hero-top">
+        <span class="tag mono" id="session-tag">PRIMARY SESSION</span>
+        <span class="body-rule mono" id="body-rule">BODY &le; 2/10</span>
+      </div>
+      <div class="workout-title" id="training-title">6 KM FLAT EASY RUN</div>
+      <div class="workout-sub mono" id="training-sub">HR &lt; 142 BPM &bull; PHASE 1 BASE</div>
+    </section>
+
+    <section class="targets-strip">
+      <div class="target-box kcal">
+        <span class="target-label mono">KCAL</span>
+        <span class="target-val mono" id="kcal">2,700</span>
+      </div>
+      <div class="target-box protein">
+        <span class="target-label mono">PRO</span>
+        <span class="target-val mono" id="protein">160g</span>
+      </div>
+      <div class="target-box water">
+        <span class="target-label mono">H2O</span>
+        <span class="target-val mono" id="water">3.0L</span>
       </div>
     </section>
 
-    <section class="grid-2">
-      <div class="glass widget">
-        <div class="widget-head">
-          <div class="mini-icon">🌅</div>
-          <div class="label" style="margin:0">MORNING STACK</div>
-        </div>
-        <div class="widget-body" id="morning-stack"></div>
+    <section class="main-grid">
+      <div class="panel">
+        <div class="panel-title mono">AM STACK</div>
+        <ul class="panel-list" id="am-stack"></ul>
       </div>
-      <div class="glass widget">
-        <div class="widget-head">
-          <div class="mini-icon">☕</div>
-          <div class="label" style="margin:0">FOCUS & HYDRATION</div>
-        </div>
-        <div class="widget-body" id="focus-hydration"></div>
+
+      <div class="panel">
+        <div class="panel-title mono">FUEL LOG</div>
+        <ul class="panel-list" id="fuel-log"></ul>
       </div>
     </section>
 
-    <section class="glass fuel">
-      <div class="fuel-header">
-        <div class="label" style="margin:0">QUALITY FUEL</div>
-        <div class="fuel-cue" id="fuel-cue"></div>
-      </div>
-      <div class="meal-row"><span>🥪</span><div><span class="meal-tag">LUNCH — </span><span id="lunch"></span></div></div>
-      <div class="meal-row"><span>🥤</span><div><span class="meal-tag">SNACK — </span><span id="snack"></span></div></div>
-      <div class="meal-row"><span>🍲</span><div><span class="meal-tag">DINNER — </span><span id="dinner"></span></div></div>
-    </section>
-
-    <section class="grid-2">
-      <div class="glass widget teal">
-        <div class="widget-head">
-          <div class="mini-icon">🧘</div>
-          <div class="label" style="margin:0">MEDITATION</div>
-        </div>
-        <div class="widget-body" id="meditation-cue"></div>
-      </div>
-      <div class="glass widget indigo">
-        <div class="widget-head">
-          <div class="mini-icon">🌙</div>
-          <div class="label" style="margin:0">EVENING</div>
-        </div>
-        <div class="widget-body" id="evening"></div>
-      </div>
-    </section>
+    <footer class="footer">
+      <span class="footer-badge mono">PM &amp; FOCUS</span>
+      <span class="mono" id="pm-protocol"></span>
+    </footer>
   </main>
 
 <script>
   const THEMES = {
-    SWIM: { icon: "🏊", tint: "rgba(56, 189, 248, 0.25)", border: "rgba(125, 211, 252, 0.45)" },
-    RUN:  { icon: "🏃", tint: "rgba(16, 185, 129, 0.24)", border: "rgba(110, 231, 183, 0.45)" },
-    LIFT: { icon: "🏋️", tint: "rgba(245, 158, 11, 0.24)", border: "rgba(252, 211, 77, 0.45)" },
-    REST: { icon: "🧘", tint: "rgba(129, 140, 248, 0.24)", border: "rgba(165, 180, 252, 0.45)" }
+    RUN:  "#FFD426",
+    LIFT: "#FF9F45",
+    SWIM: "#9BE7D8",
+    REST: "#D6C6FF"
   };
 
-  const data = window.__CARD_DATA__ || {
-    Badge: "TRAIL DE FICALHO 2027 • W1",
-    Day_Label: "Monday, Nov 23",
-    Subtitle: "Phase 1 Kickoff • Active Recovery",
-    Kcal: "2,700 kcal", Protein: "160g PRO", Water: "3L Water", Body_Rule: "Body ≤ 2/10",
-    Training_Type: "SWIM",
-    Training_Title: "30m Slow Swim + 15m Mobility",
-    Training_Sub: "Active recovery • Calf & hip focus",
-    Morning_Stack: "30mg Elvanse • Vivo WHOLE + ½ Vegan Pro + 350ml Oat Milk • 5g Creatine • 2ml Omega-3 • 0.5ml D3/K2 • Banana & almonds",
-    Focus_Hydration: "Coffee/Tea + 200mg L-Theanine • Cutoff 14:00 • 2× 1L Water",
-    Fuel_Cue: "Whole veg fuel • 160g PRO",
-    Lunch: "Rugbrød Plate: 3 Eggs, 60g Cheese, Hummus & Greens (~44g)",
-    Snack: "Kefir Shake: 350ml Kefir + 1 Scoop Vegan Pro + Berries (~38g)",
-    Dinner: "Smoky Black Beans, Crispy Tofu & Rice Bowl w/ Salsa & Cheddar (~49g)",
-    Meditation_Cue: "10m Daily Meditation • Breathwork & mental reset",
-    Evening: "Magnesium Glycinate 45m pre-bed • Light/rest night"
+  const fallbackData = {
+    Badge: "FICALHO 50K // PH.1",
+    Day_Label: "Tue, Nov 24",
+    Subtitle: "6 km flat easy run • HR < 142 bpm",
+    Kcal: "2,700",
+    Protein: "160g",
+    Water: "3.0L",
+    Body_Rule: "Body ≤ 2/10",
+    Training_Type: "RUN",
+    Training_Title: "6 km Flat Easy Run",
+    Training_Sub: "Easy aerobic pace • HR < 142 bpm",
+    Morning_Stack: "30mg Elvanse • Vivo WHOLE + ½ Vegan Pro + 350ml Oat Milk • 5g Creatine • 2ml Omega-3 • 0.5ml D3/K2",
+    Focus_Hydration: "Coffee/Tea + 200mg L-Theanine • Cutoff 14:00 • Mag Glycinate PM",
+    Lunch: "Rugbrød Plate: Eggs, Cheese & Greens",
+    Snack: "350ml Kefir + 1 Scoop Vegan Pro + Fruit",
+    Dinner: "Rice, Beans & Tofu Bowl"
   };
 
-  const theme = THEMES[data.Training_Type] || THEMES.SWIM;
-  document.documentElement.style.setProperty("--hero-tint", theme.tint);
-  document.documentElement.style.setProperty("--hero-border", theme.border);
+  const d = window.__CARD_DATA__ || fallbackData;
+  const heroColor = THEMES[(d.Training_Type || "").toUpperCase()] || THEMES.RUN;
+  document.documentElement.style.setProperty("--hero-bg", heroColor);
 
-  document.getElementById("hero-icon").textContent = theme.icon;
-  document.getElementById("badge").textContent = data.Badge;
-  document.getElementById("day-label").textContent = data.Day_Label;
-  document.getElementById("subtitle").textContent = data.Subtitle;
-  document.getElementById("kcal").textContent = data.Kcal;
-  document.getElementById("protein").textContent = data.Protein;
-  document.getElementById("water").textContent = data.Water;
-  document.getElementById("body-rule").textContent = data.Body_Rule;
-  document.getElementById("training-title").textContent = data.Training_Title;
-  document.getElementById("training-sub").textContent = data.Training_Sub;
-  document.getElementById("morning-stack").textContent = data.Morning_Stack;
-  document.getElementById("focus-hydration").textContent = data.Focus_Hydration;
-  document.getElementById("fuel-cue").textContent = data.Fuel_Cue;
-  document.getElementById("lunch").textContent = data.Lunch;
-  document.getElementById("snack").textContent = data.Snack;
-  document.getElementById("dinner").textContent = data.Dinner;
-  document.getElementById("meditation-cue").textContent = data.Meditation_Cue;
-  document.getElementById("evening").textContent = data.Evening;
+  function renderList(elId, items) {
+    const ul = document.getElementById(elId);
+    ul.innerHTML = "";
+    items.filter(Boolean).forEach((text) => {
+      const li = document.createElement("li");
+      const bullet = document.createElement("span");
+      bullet.className = "bullet";
+      bullet.textContent = "▪";
+      const span = document.createElement("span");
+      span.textContent = text;
+      li.appendChild(bullet);
+      li.appendChild(span);
+      ul.appendChild(li);
+    });
+  }
+
+  document.getElementById("badge").textContent = d.Badge || fallbackData.Badge;
+  document.getElementById("day-label").textContent = d.Day_Label || fallbackData.Day_Label;
+  document.getElementById("body-rule").textContent = d.Body_Rule || fallbackData.Body_Rule;
+  document.getElementById("training-title").textContent = d.Training_Title || fallbackData.Training_Title;
+  document.getElementById("training-sub").textContent = d.Training_Sub || d.Subtitle || fallbackData.Training_Sub;
+
+  document.getElementById("kcal").textContent = (d.Kcal || fallbackData.Kcal).replace(/\s*kcal$/i, "");
+  document.getElementById("protein").textContent = (d.Protein || fallbackData.Protein).replace(/\s*PRO$/i, "");
+  document.getElementById("water").textContent = (d.Water || fallbackData.Water).replace(/\s*Water$/i, "L");
+
+  const stackItems = Array.isArray(d.Morning_Stack_List)
+    ? d.Morning_Stack_List
+    : (d.Morning_Stack || fallbackData.Morning_Stack).split(/\s*[•|]\s*/);
+
+  const fuelItems = [
+    d.Lunch ? `LUNCH: ${d.Lunch}` : `LUNCH: ${fallbackData.Lunch}`,
+    d.Snack ? `SNACK: ${d.Snack}` : `SNACK: ${fallbackData.Snack}`,
+    d.Dinner ? `DINNER: ${d.Dinner}` : `DINNER: ${fallbackData.Dinner}`
+  ];
+
+  renderList("am-stack", stackItems);
+  renderList("fuel-log", fuelItems);
+
+  document.getElementById("pm-protocol").textContent =
+    d.Focus_Hydration || d.Evening || fallbackData.Focus_Hydration;
 </script>
 </body>
 </html>
