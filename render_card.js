@@ -24,8 +24,8 @@ async function main() {
 
   const browser = await chromium.launch();
   const context = await browser.newContext({
-    viewport: { width: 500, height: 850 },
-    deviceScaleFactor: 3 // Crisp 3x Retina resolution (1290x2292) for iPhone
+    viewport: { width: 1120, height: 1120 },
+    deviceScaleFactor: 3
   });
 
   const page = await context.newPage();
@@ -38,7 +38,7 @@ async function main() {
   const htmlPath = path.resolve(__dirname, "card_v2.html");
   await page.goto(`file://${htmlPath}`, { waitUntil: "networkidle" });
 
-  // Wait briefly for backdrop-filter & fonts to settle
+  // Wait briefly for fonts & layout to settle
   await page.waitForTimeout(300);
 
   const cardElement = page.locator("#card");
